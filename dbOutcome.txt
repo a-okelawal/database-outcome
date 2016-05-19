@@ -35,3 +35,5 @@ INSERT INTO fullteam (name, player_position) VALUES ('De Gea', 'keeper');
 INSERT INTO firstteam (player_id, status) VALUES (1, 'ready');
 INSERT INTO firstteam (player_id, status) VALUES (2, 'preparing');
 DELETE FROM fullteam WHERE name = 'Vardy';
+INSERT INTO fullteam (name, player_position) VALUES ('Vezi Gea Rio', 'midfielder');
+SELECT * FROM fullteam WHERE name LIKE '%Gea%'; 
