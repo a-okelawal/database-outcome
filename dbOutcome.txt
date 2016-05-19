@@ -1,0 +1,37 @@
+CREATE DATABASE manu;
+
+CREATE TABLE fullteam
+(
+    player_id INT(5) AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20),
+    player_position VARCHAR(15)	
+}
+
+CREATE TABLE firstteam
+(
+    firstteam_id INT(5) AUTO_INCREMENT PRIMARY KEY,
+    status VARCHAR(20),
+    player_id INT(5),
+    FOREIGN KEY (player_id) REFERENCES fullteam(player_id)
+)
+
+CREATE TABLE reserve
+(
+    bench_id INT(5) AUTO_INCREMENT PRIMARY KEY,
+    firstteam_id INT(5),
+    FOREIGN KEY (firstteam_id) REFERENCES firstteam(firstteam_id)
+)
+
+CREATE TABLE matchplayers
+(
+    match_id INT(5) AUTO_INCREMENT PRIMARY KEY,
+    match_position INT(2) UNIQUE KEY,
+    firstteam_id INT(5),
+    FOREIGN KEY (firstteam_id) REFERENCES firstteam(firstteam_id)
+)
+
+INSERT INTO fullteam (name, player_position) VALUES ('Vardy', 'striker');
+INSERT INTO fullteam (name, player_position) VALUES ('De Gea', 'keeper');
+INSERT INTO firstteam (player_id, status) VALUES (1, 'ready');
+INSERT INTO firstteam (player_id, status) VALUES (2, 'preparing');
+DELETE FROM fullteam WHERE name = 'Vardy';
